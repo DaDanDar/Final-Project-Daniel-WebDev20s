@@ -1,0 +1,591 @@
+/*the basic formatting and styling for most of the code, because * is universal selector*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    line-height: 140%;
+    letter-spacing: 0.5px;
+    word-spacing: 0.7px;
+}
+
+/*the styling for the body, this has the background-color and configurations of the background image making it fixed and centered. it also declares the font family for the body section*/
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    background-color: #ffffff;
+    color: black;
+    padding: 2%;
+    /*the awesome background image*/
+    background-image: url('/media/Screenshot\ 2025-01-08\ 181448.png');
+    /*so that the background image is fixed onto one position*/
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: center;
+}
+
+/*the styling for the epic and definitely not generic navbar! it has a fixed position on the webpage and it has a flexbox display set column (so the links appear in columns), and the background-color is black*/
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    background-color: black;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+    /*aligns the nav bar anchors to the left (flex-start)*/
+    align-items: flex-start;
+
+    /*display of flex, and also vendor prefixes for safari and internet explorer*/
+    display: flex;
+    -webkit-display: flex; /*safari*/
+    -ms-display: flex; /*internet explorer*/
+
+    flex-direction: column;
+    -webkit-flex-direction: column; /*safari*/
+    -ms-flex-direction: column; /*internet explorer*/
+
+    transition: transform 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease; /*safari*/
+    -moz-transition: all 0.3s ease; /*firefox*/
+    -o-transition: all 0.3s ease; /*opera*/
+}
+
+/*the styling for the name class (The DanDar Dip), it has a transition property for its font size, because in the media query we shrink or grow the size of the .name class, so the transition helps make it look smooth*/
+.name {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+
+    /*transition and its prefixes for different browser*/
+    transition: font-size 0.3s ease-in-out;
+    -webkit-transition: font-size 0.3s ease; /*safari*/
+    -moz-transition: font-size 0.3s ease; /*firefox*/
+    -o-transition: font-size 0.3s ease; /*opera*/
+}
+
+/*the media queries responsible for changing the size of .name class (The DanDar Dip) whenever the screen is below or above a certain px size*/
+@media (max-width: 1200px) {
+    .name {
+        font-size: 2rem;
+    }
+
+    .voting-section h2{
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .name {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .name {
+        font-size: 1.4rem;
+    }
+}
+
+/*the styling for the ul in the nav. it has a display of flex so it flexes on the poor coders*/
+nav ul {
+    list-style-type: none;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    display: flex;
+    -webkit-display: flex; /* Safari */
+    -ms-display: flex; /* Internet Explorer */
+}
+
+/*the styles for the anchors in the navbar, */
+nav ul li a {
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    text-decoration: none;
+    white-space: nowrap;
+
+    /*transition and its prefixes for different browser*/
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+/*the styling of the anchor in the navbar when you hover over them, it changes color and adds a white background to it. contrast!!!*/
+nav ul li a:hover {
+    color: black;
+    background-color: white;
+    border: 0.1rem solid black;
+}
+
+/*responsive navbar styling, basically just adjusts the display of the nav bar once the screen width hits 800px or lower*/
+@media (max-width: 800px) {
+    nav {
+        flex-direction: column;
+        -webkit-flex-direction: column; /*safari*/
+        -ms-flex-direction: column; /*internet explorer*/
+
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        -webkit-flex-direction: column; /*safari*/
+        -ms-flex-direction: column; /*internet explorer*/
+
+        align-items: center;
+        gap: 0.5rem;
+        justify-content: space-around;
+    }
+
+    nav ul li a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/*makes the highlighted part black and the text highlighted white. not a good idea. just for cool. please ignore this. PLEASE*/
+::selection {
+    background-color: black;
+    color: white;
+}
+
+/*the syling for the intro text at the beginning of each page*/
+.intro-text {
+    background-color: rgb(255, 255, 255, 0.9);
+    text-align: center;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 50% 10% 0 10%;
+    max-width: 80%;
+    position:relative;
+}
+
+/*styling for the h1 inside the intro-text class*/
+.intro-text h1 {
+    font-size: 2.6rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/*styling for the p inside the intro-text class*/
+.intro-text p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2rem;
+    margin: 2% 0 2% 0;
+}
+
+/*styling for the menu section on the menu.html page*/
+.menu-section {
+    /*creates a responsive grid layout with columns. it creates as many columns as will fit in the container. each column will be at least 250px wide, but can grow to take up a portion of the remaining space*/
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /*gap between grid items*/
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: rgb(255, 255, 255, 0.9);
+    border-radius: 8px;
+    
+    display: grid;
+    -ms-display: grid;
+}
+
+/*styling for the items inside the menu section container. makes the background color black and makes the text aligned at the center. it's also a flexbox display and it's in flex columns*/
+.menu-item {
+    background-color: black;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    justify-content: space-between;
+
+    /*smooth transition for the transform and box shadow properties*/
+    transition: transform 0.6s ease-in-out, box-shadow 0.3s ease;
+    -webkit-transition: transform 0.6s ease-in-out, box-shadow 0.3s ease;
+    -moz-transition: transform 0.6s ease-in-out, box-shadow 0.3s ease;
+    -o-transition: transform 0.6s ease-in-out, box-shadow 0.3s ease;
+
+    /*flex display and browser prefixes*/
+    display: flex;
+    -webkit-display: flex; /*safari*/
+    -ms-display: flex; /*internet explorer*/
+}
+
+/*the syles of the menu items when hovered over them*/
+.menu-item:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    border: 8px solid white;
+    border-style: dotted;
+
+    /*makes the item box pop up*/
+    transform: translateY(-11px);
+    -webkit-transform: translateY(-11px);
+    -moz-transform: translateY(-11px);
+    -ms-transform: translateY(-11px);
+
+    /*smooth transition and browser prefixes*/
+    transition: transform 0.3s ease-in-out, border 0.4s ease-in-out;
+    -webkit-transition: transform 0.3s ease-in-out, border 0.4s ease-in-out;
+    -moz-transition: transform 0.3s ease-in-out, border 0.4s ease-in-out;
+    -o-transition: transform 0.3s ease-in-out, border 0.4s ease-in-out;
+
+    /*smooth and repeating animation and browser prefixes*/
+    animation: glow 1.5s ease-in-out infinite;
+    -webkit-animation: glow 1.5s ease-in-out infinite;
+    -moz-animation: glow 1.5s ease-in-out infinite;
+    -o-animation: glow 1.5s ease-in-out infinite;
+}
+
+/*glowing animation to signify responsiveness!!!!! it glows*/
+@keyframes glow {
+    /*at 0%, it starts off with a bunch of box shadow layers*/
+    0% {
+        box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px white, 0 0 25px white, 0 0 30px white;
+    }
+    /*at 50%, the glow shifts to different layers of a black shadow. giving it a glowing effect*/
+    50% {
+        box-shadow: 0 0 5px black, 0 0 10px black, 0 0 15px black, 0 0 20px black, 0 0 25px black, 0 0 30px black;
+    }
+    /*switches back to the beginning colour. then the cycle starts again*/
+    100% {
+        box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px white, 0 0 25px white, 0 0 30px white;
+    }
+}
+
+/*the styling for the h2 of the menu item, basically just font size and margin*/
+.menu-item h2 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+/*the description of the menu items and the style*/
+.menu-item p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+/*the anchor tags on the merch items*/
+.menu-item a {
+    /*makes the link displays like an inline block element*/
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: black;
+    /*no text decoration for the links*/
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+
+    /*smooth transition for when the user stops hovering*/
+    transition: background-color 0.3s ease;
+    -webkit-transition: background-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
+}
+
+/*changes the background color of the anchor to gray*/
+.menu-item a:hover {
+    background-color: #666666;
+}
+
+/*the styling for the footer, just basic color and alignment*/
+footer {
+    margin-top: 3%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1;
+    font-size: 1rem;
+    color: white;
+    padding: 1rem;
+}
+
+/*styling for the images on the pages, just basic size adjustments and the alt text color is white*/
+img{
+    width: 100%; 
+    height: 100%;
+    color:white;
+}
+
+/*the styling for the merch section on the merch.html page*/
+.merch-section {
+    /*creates a responsive grid layout with columns. it creates as many columns as will fit in the container. each column will be at least 250px wide, but can grow to take up a portion of the remaining space*/
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /*the gap between the grid items*/
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: rgb(255, 255, 255, 0.9);
+    border-radius: 8px;
+
+    /*grid display*/
+    display: grid;
+    -ms-display: grid;
+}
+
+/*the styling for the individual merch items. basically just alignments and color and flexbox*/
+.merch-item{
+    background-color: black;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+
+    /*smooth transition for the transform and box shadow properties*/
+    transition: transform 0.6s ease-in-out, box-shadow 0.3s ease;
+    -webkit-transition: transform 0.6s ease-in-out, box-shadow 0.3s ease;
+    -moz-transition: transform 0.6s ease-in-out, box-shadow 0.3s ease;
+    -o-transition: transform 0.6s ease-in-out, box-shadow 0.3s ease;
+
+    /*flexbox display and browser prefixes*/
+    display: flex;
+    -webkit-display: flex;
+    -ms-display: flex;
+
+    /*the flex direction is in columns, and also browser prefixes*/
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+}
+
+/*the styling for when you're hovering over the merch items*/
+.merch-item:hover{
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    border: 8px solid white;
+    border-style: dotted;
+
+    /*makes the merch item pops up when hovered over*/
+    transform: translateY(-11px);
+    -webkit-transform: translateY(-11px);
+    -moz-transform: translateY(-11px);
+    -ms-transform: translateY(-11px);
+
+    /*gets a smooth transition for the hovering part*/
+    transition: transform 0.3s ease-in-out, border 0.4s ease-in-out;
+    -webkit-transition: transform 0.3s ease-in-out, border 0.4s ease-in-out;
+    -moz-transition: transform 0.3s ease-in-out, border 0.4s ease-in-out;
+    -o-transition: transform 0.3s ease-in-out, border 0.4s ease-in-out;
+
+    /*references the glow animation*/
+    animation: glow 1.5s ease-in-out infinite;
+    -webkit-animation: glow 1.5s ease-in-out infinite;
+    -moz-animation: glow 1.5s ease-in-out infinite;
+    -o-animation: glow 1.5s ease-in-out infinite;
+}
+
+/*styling for the h2 on the menu item*/
+.merch-item h2 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+/*the styling and spacing for the p tag in the merch item*/
+.merch-item p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+/*styling for the anchor tag on the merch item*/
+.merch-item a {
+    /*makes it display as an inline block*/
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: black;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+
+    /*smooth transition for when the user stops hovering*/
+    transition: background-color 0.3s ease;
+    -webkit-transition: background-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
+}
+
+/*changes the background color of the anchor tag when the user hovers over it*/
+.merch-item a:hover {
+    background-color: #666666;
+}
+
+/*styling for the horizontal row. the line that seperates things for organization*/
+hr {
+    width: 80%;
+    margin: 20px auto; 
+    background-color:white;
+}
+
+/*the section where the user can vote for the next dip flavor*/
+.voting-section {
+    background-color: black; 
+    color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 5% 10%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 17px solid rgb(255, 255, 255, 0.9);
+}
+
+/*the font styling for the h2 in the voting section*/
+.voting-section h2 {
+    font-size: 2rem; 
+    margin-bottom: 1.5rem;
+    font-family: 'Lucida Sans', sans-serif;
+    text-transform: uppercase;
+}
+
+/*media queries for adjusting the size of the h2 when the screen is adjusted. this is done through max-width and font-size*/
+@media (max-width: 1200px) {
+    .voting-section h2 {
+        font-size: 1.8rem; 
+    }
+}
+
+@media (max-width: 800px) {
+    .voting-section h2 {
+        font-size: 1.5rem; 
+    }
+}
+
+@media (max-width: 500px) {
+    .voting-section h2 {
+        font-size: 1.2rem; 
+    }
+}
+
+/*margin for the form in the voting section*/
+.voting-section form {
+    margin-top: 1rem;
+}
+
+/*the styling for the fieldset container*/
+fieldset {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: black; 
+}
+
+/*the font styling for the legend, basically the title for the fieldset*/
+legend {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0 0.5rem;
+}
+/*the size styling for the label for the dip radio inputs*/
+label {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+}
+
+/*the styling for the text and emal inputs in the form*/
+input[type="text"],
+input[type="email"] {
+    /*calculates the width of an element by taking 100% of its container's width and subtracting 2rem from it*/
+    width: calc(100% - 2rem);
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    border: 1px solid black;
+    font-size: 1rem;
+}
+
+/*the styling for the submit button to submit the form*/
+button[type="submit"] {
+    background-color: white;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    width: 100%; 
+    margin-top: 1rem; 
+    /*the cursor is now a pointer!!!*/
+    cursor: pointer;
+
+    /*smooth transition for the background color change*/
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    -webkit-transition: background-color 0.3s ease, transform 0.2s ease;
+    -moz-transition: background-color 0.3s ease, transform 0.2s ease;
+    -o-transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/*the styling for the submit button when you're hovering over it*/
+button[type="submit"]:hover {
+    background-color: #666666;
+    color: white;
+
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+}
+
+/*makes the submit button more reactive when you click on it*/
+button[type="submit"]:active {
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+}
+
+/*styling for the radio buttons*/
+input[type="radio"] {
+    border-radius: 3px;
+    /*the cursor becomes a pointer!*/
+    cursor: pointer;
+    position: relative;
+    margin: 2.65%;
+}
+
+/*changes the color of the radio buttons after they've been checked*/
+input[type="radio"]:checked {
+    accent-color: #FFD700;
+}
+
+/*the font size for the descriptions of the new dip variants on the about-us.html page*/
+.new-item-description {
+    font-size: 0.75rem;
+}
+
+/*special margin adjustion for the footer on the error page*/
+#footer-on-error-page{
+    margin:50% 10% 0% 10%;
+}
+
+/*gives no text decoration for the footer links at first*/
+footer a{
+    text-decoration: none;
+}
+
+/*gives the footer links underlines when you hover over them*/
+footer a:hover{
+    text-decoration: underline;
+}
+
+/*styling for the anchor tags, mainly for the ones used as the sociual media links*/
+a {
+    color:white; 
+    font-weight:bold; 
+    font-size:large;
+}
+
+/*makes the texts in the sub tag xtra small*/
+sub {
+    font-size: x-small;
+}

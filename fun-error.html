@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--basic meta and setup, includes link to the stylesheet and favicon-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 - Dip Not Found</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+
+    <!--thank you stack overflow and chatgpt. this js code basically uses variables to move the navbar away when you scroll down, and have it pop back up when you scroll up. thats done by the if and else statements-->
+    <script>
+        //basically makes sure the code only starts working after the webpage fully loads
+        document.addEventListener("DOMContentLoaded", () => {
+            //it declares a variable of 'nav' and searches the html for the nav tag, so it knows which part of the webpage to show or hide
+            var nav = document.querySelector("nav");
+            //declares lastScrollY variable to store the Y pos of the page and gives it the current Y pos of the page
+            var lastScrollY = window.scrollY;
+
+            //detects when the user scrolls on the window
+            window.addEventListener("scroll", () => {
+                // if and else statement to run code when the player scrolls up or down
+                if (window.scrollY > lastScrollY) {
+                    //scrolling down hides the navbar when the user scrolls down 
+                    nav.style.transform = "translateY(-100%)";
+                    //hides the navbar from assistive technology
+                    nav.setAttribute("aria-hidden", "true");
+                    //finds all anchor tags in the navbar, then loops through them
+                    nav.querySelectorAll("a").forEach((el) => {
+                        //removes ability to tab through navbar by setting the tabindex to -1
+                        el.setAttribute("tabindex", "-1"); 
+                    });
+                } else {
+                    //scrolling up shows the navbar now
+                    nav.style.transform = "translateY(0)";
+                    //able to use assistive technology for navbar now
+                    nav.setAttribute("aria-hidden", "false");
+                    //finds all anchor tags and loops throught them
+                    nav.querySelectorAll("a").forEach((el) => {
+                        //restores the ability to tab through the navbar by removing the -1
+                        el.removeAttribute("tabindex"); 
+                    });
+                }
+                //remembers your current scroll position so it can compare it next time you scroll
+                lastScrollY = window.scrollY;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!--nav tag for semantic-->
+    <nav>
+        <!--name of the website, not the title that displays on the tab-->
+        <header class="name">
+            <h1>Error 404 - Dip Not Found</h1>
+            <!--your dip is in another castle!!!-->
+            <p style="font-size:1.5rem;">Your Dip is in another castle</p>
+        </header>
+
+        <!--unordered list for the links that takes you to other part of the website-->
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Take Your Order</a></li>
+            <li><a href="merch.html">Merchandise</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!--footer stuff with social media links and legal mumbo jumbo-->
+    <footer style="font-weight: bold;" id="footer-on-error-page">
+        &copy; 2025 - The DanDar Dip - All Rights Reserved <br/>
+        <sub>
+            We are not responsible for any injuries or health effects caused by consuming the Dip. Use at your own risk.
+            <br/>
+            <hr/>
+            <!--links to social media sites-->
+            Follow Us at <a href="https://x.com/" target="_blank">X</a> <br/>
+            Or <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+        </sub>
+    </footer>
+</body>
+</html>

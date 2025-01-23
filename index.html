@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--basic meta and setup, includes link to the stylesheet and favicon-->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>The DanDar Dip - Home</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+
+    <!--thank you stack overflow and chatgpt. this js code basically uses variables to move the navbar away when you scroll down, and have it pop back up when you scroll up. thats done by the if and else statements-->
+    <script>
+        //basically makes sure the code only starts working after the webpage fully loads
+        document.addEventListener("DOMContentLoaded", () => {
+            //it declares a variable of 'nav' and searches the html for the nav tag, so it knows which part of the webpage to show or hide
+            var nav = document.querySelector("nav");
+            //declares lastScrollY variable to store the Y pos of the page and gives it the current Y pos of the page
+            var lastScrollY = window.scrollY;
+
+            //detects when the user scrolls on the window
+            window.addEventListener("scroll", () => {
+                // if and else statement to run code when the player scrolls up or down
+                if (window.scrollY > lastScrollY) {
+                    //scrolling down hides the navbar when the user scrolls down 
+                    nav.style.transform = "translateY(-100%)";
+                    //hides the navbar from assistive technology
+                    nav.setAttribute("aria-hidden", "true");
+                    //finds all anchor tags in the navbar, then loops through them
+                    nav.querySelectorAll("a").forEach((el) => {
+                        //removes ability to tab through navbar by setting the tabindex to -1
+                        el.setAttribute("tabindex", "-1"); 
+                    });
+                } else {
+                    //scrolling up shows the navbar now
+                    nav.style.transform = "translateY(0)";
+                    //able to use assistive technology for navbar now
+                    nav.setAttribute("aria-hidden", "false");
+                    //finds all anchor tags and loops throught them
+                    nav.querySelectorAll("a").forEach((el) => {
+                        //restores the ability to tab through the navbar by removing the -1
+                        el.removeAttribute("tabindex"); 
+                    });
+                }
+                //remembers your current scroll position so it can compare it next time you scroll
+                lastScrollY = window.scrollY;
+            });
+        });
+    </script>
+
+    <!--internal stylesheet for media queries for adjusting the size of the video and textarea based on the screen size-->
+    <style>
+        /*shrinks the video to 65% when the width is 1400px or less, and shrinks textarea to 90%*/
+        @media (max-width: 1400px) {
+            video {
+                width: 65%;
+                height:65%;
+            }
+
+            textarea {
+                width: 90%;
+            }
+        }
+
+        /*shrinks the video to 55% when the width is 800px or less, and shrinks textarea to 80%*/
+        @media (max-width: 800px) {
+            video {
+                width: 55%;
+                height:55%;
+            }
+
+            textarea {
+                width: 80%;
+            }
+        }   
+
+        /*shrinks the video to 50% when the width is 400px or less, and shrinks textarea to 70%*/
+        @media (max-width: 400px) {
+            video {
+                width: 50%;
+                height: 50%;
+            }
+
+            textarea {
+                width: 70%;
+            }
+        }
+
+        /*makes the texts inside the span yellow*/
+        span {
+            color:#FFD700; 
+            font-style:italic;
+        }
+
+        /*textarea original styling. resize:none makes the textarea unable to be resized by the user*/
+        textarea {
+            width: 100%;
+            max-width:100%;
+            padding: 0.5rem;
+            box-sizing: border-box;
+            resize: none;
+        }
+    </style>
+</head>
+
+<!--the body houses the name, navbar, video, and other content-->
+<body>
+    <!--nav tag for semantic-->
+    <nav>
+        <!--name of the website, not the title that displays on the tab-->
+        <header class="name">
+            <h1>The DanDar Dip - Home</h1>
+        </header>
+
+        <!--unordered list for the links that takes you to other part of the website-->
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Take Your Order</a></li>
+            <li><a href="merch.html">Merchandise</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!--main content of this web page-->
+    <main>
+        <!--article for the intro text-->
+        <article class="intro-text">
+            <h1>
+                Discover the Dip.
+            </h1>
+            <p>
+                The Dip is the ultimate life experience. Here at The DanDar Dip, we offer only the best selection of Dips. Now it is in your hands, to Discover the Dip.
+            </p>
+            <!--figure for the video that you can play-->
+            <figure>
+                <video width="55%" height="55%" controls>
+                    <source src="media/1D4971AB-FA0E-46F3-A907-2034B0A23EF3.mp4" type="video/mp4" alt="A video of our Dip representative telling you to buy the Dip. He's very short too, but don't tell him that!">
+                </video>
+            </figure>
+        </article>
+
+        <section class="voting-section">
+            <!--title for the form-->
+            <h2>Give us your <span>thoughts!</span></h2>
+            <!--form starts. im using GET cuz no backend-->
+            <form method="GET">
+                <!--fiedset to contain all the new Dip variants you can vote for-->
+                <fieldset>
+                    <!--title for the fieldset-->
+                    <legend>Welcome to The DanDar Dip! How are you liking it here so far?</legend>
+                    
+                    <!--div for the radio input buttons and its label-->
+                    <div>
+                        <input type="radio" id="love-it" name="user-opinion" value="I love it here!" required>
+                        <label for="love-it">I love it here!</label>
+                    </div>
+
+                    <!--div for the radio input buttons and its label-->
+                    <div>
+                        <input type="radio" id="Meh" name="user-opinion" value="Meh" required>
+                        <label for="Meh">Meh</label>
+                    </div>
+
+                    <!--div for the radio input buttons and its label-->
+                    <div>
+                        <input type="radio" id="hate-it" name="user-opinion" value="I HATE IT HERE!!!" required>
+                        <label for="hate-it">I HATE IT HERE!!!</label>
+                    </div>
+                </fieldset>
+                
+                <!--fieldset to contain the user thoughts inputs-->
+                <fieldset>
+                    <!--title for the fieldset-->
+                    <legend>Any extra thoughts?</legend>
+                    
+                    <!--div for the textarea for extra user thoughts and opinions (no one's reading these)-->
+                    <div>
+                        <textarea id="extra-notes" name="textfield" rows="15" cols="120" placeholder="Write down your thoughts here."></textarea>
+                        <label for="extra-notes"></label>
+                    </div>
+                </fieldset>
+                
+                <!--button to submit the form-->
+                <button type="submit">Submit Your Thoughts</button>
+            </form>
+        </section>  
+    </main>
+
+    <!--footer stuff with social media links and legal mumbo jumbo-->
+    <footer style="font-weight: bold;">
+        &copy; 2025 - The DanDar Dip - All Rights Reserved <br/>
+        <sub>
+            We are not responsible for any injuries or health effects caused by consuming the Dip. Use at your own risk.
+            <br/>
+            <hr/>
+            <!--links to social media sites-->
+            Follow Us at <a href="https://x.com/" target="_blank">X</a> <br/>
+            Or <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+        </sub>
+    </footer>
+</body>
+</html>

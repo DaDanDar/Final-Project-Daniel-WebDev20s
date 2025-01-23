@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--basic meta and setup, includes link to the stylesheet and favicon-->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>The DanDar Dip - About Us</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+
+    <!--thank you stack overflow and chatgpt. this js code basically uses variables to move the navbar away when you scroll down, and have it pop back up when you scroll up. thats done by the if and else statements-->
+    <script>
+        //basically makes sure the code only starts working after the webpage fully loads
+        document.addEventListener("DOMContentLoaded", () => {
+            //it declares a variable of 'nav' and searches the html for the nav tag, so it knows which part of the webpage to show or hide
+            var nav = document.querySelector("nav");
+            //declares lastScrollY variable to store the Y pos of the page and gives it the current Y pos of the page
+            var lastScrollY = window.scrollY;
+
+            //detects when the user scrolls on the window
+            window.addEventListener("scroll", () => {
+                // if and else statement to run code when the player scrolls up or down
+                if (window.scrollY > lastScrollY) {
+                    //scrolling down hides the navbar when the user scrolls down 
+                    nav.style.transform = "translateY(-100%)";
+                    //hides the navbar from assistive technology
+                    nav.setAttribute("aria-hidden", "true");
+                    //finds all anchor tags in the navbar, then loops through them
+                    nav.querySelectorAll("a").forEach((el) => {
+                        //removes ability to tab through navbar by setting the tabindex to -1
+                        el.setAttribute("tabindex", "-1"); 
+                    });
+                } else {
+                    //scrolling up shows the navbar now
+                    nav.style.transform = "translateY(0)";
+                    //able to use assistive technology for navbar now
+                    nav.setAttribute("aria-hidden", "false");
+                    //finds all anchor tags and loops throught them
+                    nav.querySelectorAll("a").forEach((el) => {
+                        //restores the ability to tab through the navbar by removing the -1
+                        el.removeAttribute("tabindex"); 
+                    });
+                }
+                //remembers your current scroll position so it can compare it next time you scroll
+                lastScrollY = window.scrollY;
+            });
+        });
+    </script>
+
+    <!--internal style for the spans and the link that says BUY THE DIP-->
+    <style>
+        /*makes the text inside the spans yellow and italian*/
+        span {
+            color:#FFD700; 
+            font-style:italic;
+        }
+
+        /*regular BUY THE DIP phrase style*/
+        #buydip {
+            text-decoration: none;
+            font-weight: bold;
+            color: black;
+        }
+
+        /*changes fonts and makes it bold to show interactivity, also underlines but whateves*/
+        #buydip:hover {
+            text-decoration: underline;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <!--nav for semantic-->
+    <nav>
+        <!--name of the website, not the title that displays on the tab-->
+        <header class="name">
+            <h1>The DanDar Dip - Info</h1>
+        </header>
+
+        <!--unordered list for the links that takes you to other part of the website-->
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Take Your Order</a></li>
+            <li><a href="merch.html">Merchandise</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!--main content of this web page-->
+    <main>
+        <!--article for the intro text-->
+        <article class="intro-text">
+            <h1>
+                Discover Us.
+            </h1>
+            <!--explanation for the Dip in a section tag for semantic-->
+            <section>
+                <p>
+                    What is the Dip? Well, to our dear consumer and current (or soon to be) connoisseur of the Dip, it is with great unfortunacy to inform you that, even we, 
+                    don't know what's the Dip. Its composition and origin are so secretive, it has eluded our grasp ever since its discovery back in 2009, January 25th. 
+                    But, what we do know is that our Dip satisfies all your desire for the Dip. The Dip is more awesome than the Awesome Sauce. So, the moral of the story is that you should
+                    <!--the link to the menu.html page to buy the Dip-->
+                    <a href="menu.html" id="buydip">BUY THE DIP.</a>
+                </p>
+            </section>
+        </article>
+
+        <!--a section of the page with a form you can fill out-->
+        <section class="voting-section">
+            <!--title for the form-->
+            <h2><span>NEW!</span> Vote for the Dip that you want to see next!</h2>
+            <!--form starts. im using GET cuz no backend.-->
+            <form method="GET">
+                <!--fiedset to contain all the new Dip variants you can vote for-->
+                <fieldset>
+                    <!--title for the fieldset-->
+                    <legend>Choose a new Dip variant:</legend>
+                    
+                    <!--div for the radio input buttons and its label-->
+                    <div>
+                        <input type="radio" id="f-fungus" name="dip-flavor" value="Foot Fungus" required>
+                        <label for="f-fungus">Foot Fungus - <span class="new-item-description">Perfect for those burger lettuces.</span></label>
+                    </div>
+                    <!--div for the radio input buttons and its label-->
+                    <div>
+                        <input type="radio" id="s-pie" name="dip-flavor" value="Shepherd's Pie" required>
+                        <label for="s-pie">Shepherd's Pie - <span class="new-item-description">The founder's favorite.</span></label>
+                    </div>
+                    <!--div for the radio input buttons and its label-->
+                    <div>
+                        <input type="radio" id="n-fushion" name="dip-flavor" value="Nuclear Fushion" required>
+                        <label for="n-fushion">Nuclear Fusion - <span class="new-item-description">How'd we even do this?</span></label>
+                    </div>
+                    <!--div for the radio input buttons and its label-->
+                    <div>
+                        <input type="radio" id="dye-40" name="dip-flavor" value="Red Dye 40" required>
+                        <label for="dye-40">Red Dye 40 - <span class="new-item-description">It's red.</span></label>
+                    </div>
+                </fieldset>
+                
+                <!--fieldset to contain the user info inputs-->
+                <fieldset>
+                    <!--title for the fieldset-->
+                    <legend>Your Information</legend>
+                    
+                    <!--div for the user's name and text input-->
+                    <div>
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <!--div for the user's email input-->
+                    <div>
+                        <label for="email">Your Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                </fieldset>
+                
+                <!--button to submit the form-->
+                <button type="submit">Submit Vote</button>
+            </form>
+        </section>        
+    </main>
+
+    <!--footer stuff with social media links and legal mumbo jumbo-->
+    <footer style="font-weight: bold;">
+        &copy; 2025 - The DanDar Dip - All Rights Reserved <br/>
+        <sub>
+            We are not responsible for any injuries or health effects caused by consuming the Dip. Use at your own risk.
+            <br/>
+            <hr/>
+            <!--links to social media sites-->
+            Follow Us at <a href="https://x.com/" target="_blank">X</a> <br/>
+            Or <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+        </sub>
+    </footer>
+</body>
+</html>
